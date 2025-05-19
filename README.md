@@ -6,6 +6,10 @@ Setup instructions:
 2. Run `pnpm install`
 3. Run `pnpm run dev` to spin up the app
 
+## Demo
+
+[https://mini-hackernews.vercel.app/](https://mini-hackernews.vercel.app/)
+
 ## Features
 
 - [x] Display Top Stories
