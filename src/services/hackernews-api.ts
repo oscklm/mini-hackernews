@@ -1,6 +1,6 @@
 const API_BASE_URL = "https://hacker-news.firebaseio.com/v0";
 
-type Story = {
+export type Story = {
   id: number;
   by: string;
   descendants: number;
@@ -34,11 +34,17 @@ export const getOneStoryById = async (id: string): Promise<Story> => {
   return (await res.json()) as Story;
 };
 
-export const getTopStories = async (limit = 20): Promise<Story[]> => {
+export const getTopStories = async (
+  limit = 20,
+  sortByScore: boolean
+): Promise<Story[]> => {
   const storyIds = await getTopStoryIds(limit);
 
   const stories = await Promise.all(storyIds.map((id) => getOneStoryById(id)));
-  return stories;
+
+  if (!sortByScore) return stories;
+
+  return stories.sort((a, b) => b.score - a.score);
 };
 
 export const getUser = async (id: string): Promise<User> => {

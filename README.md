@@ -6,7 +6,7 @@
 
   - [x] Fetch the IDs of the top 20 stories from the Hacker News API
   - [x] Fetch story details (title, score, URL, author, etc.) for each story
-  - [ ] Display stories in a list sorted by score
+  - [x] Display stories in a list sorted by score
 
 - [x] Author Details View
   - [x] Show story title
