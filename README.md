@@ -1,5 +1,11 @@
 ## Mini Hackernews
 
+Setup instructions:
+
+1. Clone the repo
+2. Run `pnpm install`
+3. Run `pnpm run dev` to spin up the app
+
 ## Features
 
 - [x] Display Top Stories
