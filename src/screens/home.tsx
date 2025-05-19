@@ -3,8 +3,8 @@ import Link from "next/link";
 
 function StoryCard({ story }: { story: Story }) {
   return (
-    <div className="flex flex-row justify-between p-3 bg-stone-900 rounded-md">
-      <span>{story.title}</span>
+    <div className="flex flex-row justify-between items-center p-3 bg-stone-900 rounded-md">
+      <span className="max-w-[80%] md:max-w-fit">{story.title}</span>
       <span>⭐ {story.score}</span>
     </div>
   );
@@ -15,7 +15,12 @@ export default async function HomeScreen() {
 
   return (
     <div>
-      <h1 className="font-bold text-2xl mb-2 uppercase">Top stories</h1>
+      <div className="flex flex-col gap-2 mb-5">
+        <h1 className="font-bold text-3xl uppercase">Top stories ⭐</h1>
+        <span className="text-sm text-stone-500">
+          Sorted by score (high to low)
+        </span>
+      </div>
       <div className="flex flex-col gap-3">
         {topStories.length > 0 ? (
           topStories.map((story) => (

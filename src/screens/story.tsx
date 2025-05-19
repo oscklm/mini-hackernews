@@ -1,11 +1,10 @@
 import { unixTimeToDateString } from "@/app/utils/unixTimeToDateString";
 import { getOneStoryById, getUser } from "@/services/hackernews-api";
-import Link from "next/link";
 
 function Detail({ label, text }: { label: string; text: string | number }) {
   return (
-    <div className="flex flex-row gap-1 text-sm">
-      <span className=" font-semibold">{label}</span>
+    <div className="flex flex-row gap-1 text-base">
+      <span className="font-semibold">{label}</span>
       <span>{text}</span>
     </div>
   );
@@ -26,12 +25,12 @@ export default async function StoryScreen({
   const authorCreatedDate = unixTimeToDateString(author.created);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4">
       <div>
-        <h1 className="font-black">{story.title}</h1>
-        <div className="flex flex-col gap-1 py-2">
-          <Detail label="📅 Date:" text={storyCreatedDate} />
-          <Detail label="⭐ Score:" text={story.score} />
+        <h1 className="font-black text-3xl sm:text-4xl">{story.title}</h1>
+        <div className="flex flex-col gap-1 pt-2">
+          <Detail label="📅" text={storyCreatedDate} />
+          <Detail label="⭐" text={story.score} />
         </div>
       </div>
       <div>
@@ -39,7 +38,8 @@ export default async function StoryScreen({
           {story.url}
         </a>
       </div>
-      <div className="p-3 bg-stone-800 rounded-md">
+      <div className="p-3 bg-stone-800 rounded-md w-fit">
+        <span className="text-stone-700 font-semibold">Author</span>
         <h1 className="font-black text-xl">{author.id}</h1>
         <div className="gap-2">
           <Detail label="Karma:" text={author.karma} />

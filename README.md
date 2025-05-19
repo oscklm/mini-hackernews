@@ -29,3 +29,7 @@ I decided to go with a screens based folder structure, to get around the awkward
 ### Confusion around Author details view
 
 I'm assuming that the title of this feature was mispelled, judging from the requirements this seems like it was meant to be a story detail view. So i've gone that route
+
+### Styling
+
+I went with a little bit of styling, and some emojis just to spice it up a bit 🥳
