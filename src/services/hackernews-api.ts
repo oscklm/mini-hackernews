@@ -1,9 +1,9 @@
 const API_BASE_URL = "https://hacker-news.firebaseio.com/v0";
 
-export type Story = {
+type Story = {
+  id: number;
   by: string;
   descendants: number;
-  id: number;
   kids?: number[];
   score: number;
   time: number;
@@ -12,17 +12,26 @@ export type Story = {
   url?: string;
 };
 
+type User = {
+  id: string;
+  about: string;
+  created: number;
+  karma: number;
+  submitted: number[];
+};
+
 export const getTopStoryIds = async (limit = 20): Promise<string[]> => {
   const res = await fetch(`${API_BASE_URL}/topstories.json`);
-  const data = await res.json().then((result) => result.slice(0, limit));
+  const data = await res.json();
 
-  return data;
+  const slicedData = data.slice(0, limit);
+
+  return slicedData;
 };
 
 export const getOneStoryById = async (id: string): Promise<Story> => {
   const res = await fetch(`${API_BASE_URL}/item/${id}.json`);
-  const data = (await res.json().then((result) => result)) as Story;
-  return data;
+  return (await res.json()) as Story;
 };
 
 export const getTopStories = async (limit = 20): Promise<Story[]> => {
@@ -30,4 +39,9 @@ export const getTopStories = async (limit = 20): Promise<Story[]> => {
 
   const stories = await Promise.all(storyIds.map((id) => getOneStoryById(id)));
   return stories;
+};
+
+export const getUser = async (id: string): Promise<User> => {
+  const res = await fetch(`${API_BASE_URL}/user/${id}.json`);
+  return (await res.json()) as User;
 };
