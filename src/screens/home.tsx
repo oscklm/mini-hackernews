@@ -3,9 +3,14 @@ import Link from "next/link";
 
 function StoryCard({ story }: { story: Story }) {
   return (
-    <div className="flex flex-row justify-between items-center p-3 bg-stone-900 rounded-md">
-      <span className="max-w-[80%] md:max-w-fit">{story.title}</span>
-      <span>⭐ {story.score}</span>
+    <div className="flex flex-col p-3 bg-stone-900 rounded-md">
+      <div className="flex flex-row justify-between">
+        <span className="text-sm text-stone-600">@{story.by}</span>
+        <span>⭐ {story.score}</span>
+      </div>
+      <div>
+        <span className="max-w-[80%] md:max-w-fit">{story.title}</span>
+      </div>
     </div>
   );
 }
